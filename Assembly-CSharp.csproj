@@ -61,6 +61,10 @@
     <Compile Include="Assets\Scripts\Main Menu Scripts\RouteGameMain.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\PlayerProgress.cs" />
     <Compile Include="Assets\UIController.cs" />
+    <Compile Include="Assets\StoreManager.cs" />
+    <Compile Include="Assets\Waves\Wave.cs" />
+    <Compile Include="Assets\WaveSpawner.cs" />
+    <Compile Include="Assets\EnemyAI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\6000FlatButtonIcon\readme.txt" />

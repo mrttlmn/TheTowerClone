@@ -8,5 +8,6 @@ public class RouteGameMain : MonoBehaviour
    public void StartGame()
     {
         SceneManager.LoadScene("GameMain");
+
     }
 }

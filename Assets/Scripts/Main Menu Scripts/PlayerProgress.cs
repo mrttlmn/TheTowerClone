@@ -16,20 +16,23 @@ public class PlayerProgress : MonoBehaviour
             attackSpeed = PlayerPrefs.GetFloat("attackSpeed");
             criticaFactor = PlayerPrefs.GetFloat("criticaFactor");
             attackRange = PlayerPrefs.GetFloat("attackRange");
-            health = PlayerPrefs.GetFloat("health");
+            health = PlayerPrefs.GetInt("health");
             healthRegen = PlayerPrefs.GetFloat("healthRegen");
             armor = PlayerPrefs.GetFloat("armor");
             criticalChance = PlayerPrefs.GetFloat("criticalChance");
             coin = PlayerPrefs.GetInt("coin");
+            Debug.Log("GameSetBefore True");
         }
         else
         {
+            Debug.Log("GameSetBefore False");
+
             PlayerPrefs.SetInt("GameSetBefore", 1);
             PlayerPrefs.SetFloat("damage", 5);
             PlayerPrefs.SetFloat("attackSpeed", 1);
             PlayerPrefs.SetFloat("criticaFactor", 1);
             PlayerPrefs.SetFloat("armor", 0);
-            PlayerPrefs.SetFloat("health", 5);
+            PlayerPrefs.SetInt("health", 5);
             PlayerPrefs.SetFloat("attackRange", 10);
             PlayerPrefs.SetFloat("healthRegen", 0);
             PlayerPrefs.SetFloat("criticalChance", 0);
