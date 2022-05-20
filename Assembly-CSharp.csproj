@@ -56,15 +56,16 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameMain\WaveSpawner.cs" />
+    <Compile Include="Assets\Waves\Wave.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\SetCoin.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\SetDiff.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\RouteGameMain.cs" />
+    <Compile Include="Assets\Scripts\GameMain\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\PlayerProgress.cs" />
-    <Compile Include="Assets\UIController.cs" />
-    <Compile Include="Assets\StoreManager.cs" />
-    <Compile Include="Assets\Waves\Wave.cs" />
-    <Compile Include="Assets\WaveSpawner.cs" />
-    <Compile Include="Assets\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\GameMain\UIController.cs" />
+    <Compile Include="Assets\Scripts\GameMain\StoreManager.cs" />
+    <Compile Include="Assets\Scripts\GameMain\Tower\TowerHealth.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\6000FlatButtonIcon\readme.txt" />

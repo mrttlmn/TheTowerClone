@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaveId: 1
   WaveDataset:
-  - Enemy: {fileID: 6832895459355693819, guid: 4383bc8b4326bd94fafb00ddba194ff7, type: 3}
+  - Enemy: {fileID: 7883848165124749671, guid: bdcc78e157e38db4387ecf72757eacbb, type: 3}
     Count: 10
   NextWaveInSeconds: 15
   SpawnRate: 10
