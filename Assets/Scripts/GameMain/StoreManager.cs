@@ -26,6 +26,8 @@ public class StoreManager : MonoBehaviour
 
     #endregion
 
+    public GameObject Tower;
+
     void Start()
     {
         damage = PlayerPrefs.GetFloat("damage");

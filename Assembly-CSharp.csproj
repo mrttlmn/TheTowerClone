@@ -60,12 +60,13 @@
     <Compile Include="Assets\Waves\Wave.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\SetCoin.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\SetDiff.cs" />
+    <Compile Include="Assets\Scripts\GameMain\Tower\TowerHealth.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\RouteGameMain.cs" />
     <Compile Include="Assets\Scripts\GameMain\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\PlayerProgress.cs" />
     <Compile Include="Assets\Scripts\GameMain\UIController.cs" />
     <Compile Include="Assets\Scripts\GameMain\StoreManager.cs" />
-    <Compile Include="Assets\Scripts\GameMain\Tower\TowerHealth.cs" />
+    <Compile Include="Assets\TowerAttack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\6000FlatButtonIcon\readme.txt" />
