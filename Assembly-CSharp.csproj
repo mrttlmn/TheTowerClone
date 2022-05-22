@@ -67,6 +67,8 @@
     <Compile Include="Assets\Scripts\GameMain\UIController.cs" />
     <Compile Include="Assets\Scripts\GameMain\StoreManager.cs" />
     <Compile Include="Assets\TowerAttack.cs" />
+    <Compile Include="Assets\EnemyHealth.cs" />
+    <Compile Include="Assets\BulletScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\6000FlatButtonIcon\readme.txt" />

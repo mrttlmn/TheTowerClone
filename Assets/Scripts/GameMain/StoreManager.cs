@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class StoreManager : MonoBehaviour
 {
 
-    public float attackSpeed, criticaFactor, attackRange, healthRegen, criticalChance,damage, armor;
+    public float attackSpeed, criticaFactor, attackRange, healthRegen, criticalChance, damage, armor;
     public float damageCurrentPrice = 10, attackSpeedCurrentPrice = 10, criticaFactorCurrentPrice = 10, attackRangeCurrentPrice = 10, healthCurrentPrice = 10, healthRegenCurrentPrice = 10, armorCurrentPrice = 10, criticalChanceCurrentPrice = 10;
-    public int coin,health;
-    int money = 1000;
+    public int coin, health;
+    public int money = 1000;
     public Text CoinText;
     public Text MoneyText;
-     
-    public Text AttackRangeBtnPrice,ArmorBtnPrice, HealthRegenBtnPrice, HealthBtnPrice, AttackRangeBtnValue, ArmorBtnValue, HealthRegenBtnValue, HealthBtnValue, DamageBtnValue, DamageBtnPrice, AttackSpeedBtnValue, AttackSpeedBtnPrice, CriticalFactorBtnValue, CriticalFactorBtnPrice,CriticalChangeBtnValue,CriticalChangeBtnPrice;
+
+    public Text AttackRangeBtnPrice, ArmorBtnPrice, HealthRegenBtnPrice, HealthBtnPrice, AttackRangeBtnValue, ArmorBtnValue, HealthRegenBtnValue, HealthBtnValue, DamageBtnValue, DamageBtnPrice, AttackSpeedBtnValue, AttackSpeedBtnPrice, CriticalFactorBtnValue, CriticalFactorBtnPrice, CriticalChangeBtnValue, CriticalChangeBtnPrice;
 
     #region GameStoreSettings
     private readonly float PriceMultiplier = 1.2f;
@@ -27,6 +27,8 @@ public class StoreManager : MonoBehaviour
     #endregion
 
     public GameObject Tower;
+    TowerAttack attackValues;
+    TowerHealth healthValues;
 
     void Start()
     {
@@ -40,38 +42,28 @@ public class StoreManager : MonoBehaviour
         criticalChance = PlayerPrefs.GetFloat("criticalChance");
         coin = PlayerPrefs.GetInt("coin");
 
+        attackValues = Tower.GetComponent<TowerAttack>();
+        healthValues = Tower.GetComponent <TowerHealth>();
 
-        PlayerPrefs.SetFloat("damageTmp", damage);
-        PlayerPrefs.SetFloat("attackSpeedTmp", attackSpeed);
-        PlayerPrefs.SetFloat("criticalFactorTmp", criticaFactor);
-        PlayerPrefs.SetInt("healthTmp", health);
-        PlayerPrefs.SetFloat("healthRegenTmp", healthRegen);
-        PlayerPrefs.SetFloat("attackRangeTmp", attackRange);
-        PlayerPrefs.SetFloat("armorTmp", armor);
-        PlayerPrefs.SetFloat("criticalChanceTmp", criticalChance);
-        PlayerPrefs.SetInt("coinTmp", coin);
-        PlayerPrefs.SetInt("moneyTmp", money);
-
-
-        
-        
-        RestoreValues();
-        
+    }
+    private void Update()
+    {
+        MoneyText.text = money.ToString();
+        CoinText.text = coin.ToString();
     }
 
-  
 
     public void UpgradeDamage()
     {
-        if(money >= damageCurrentPrice)
+        if (money >= damageCurrentPrice)
         {
             money = money - (int)damageCurrentPrice;
             damage = damage * DamageMultiplier;
             damageCurrentPrice = damageCurrentPrice * PriceMultiplier;
-            
-            PlayerPrefs.SetInt("moneyTmp", money);
-            PlayerPrefs.SetFloat("damageTmp", damage);
-            RestoreValues();
+
+
+            attackValues.attackPower = damage;
+
 
         }
     }
@@ -82,10 +74,8 @@ public class StoreManager : MonoBehaviour
             money = money - (int)attackSpeedCurrentPrice;
             attackSpeed = attackSpeed * AttackSpeedMultiplier;
             attackSpeedCurrentPrice = attackSpeedCurrentPrice * PriceMultiplier;
-            PlayerPrefs.SetInt("moneyTmp", money);
-            PlayerPrefs.SetFloat("attackSpeedTmp", attackSpeed);
-            RestoreValues();
 
+            attackValues.attackSpeed = attackSpeed;
         }
     }
     public void UpgradeCriticalFactor()
@@ -97,10 +87,8 @@ public class StoreManager : MonoBehaviour
             criticaFactor = criticaFactor * CriticaFactorMultiplier;
             criticaFactorCurrentPrice = criticaFactorCurrentPrice * PriceMultiplier;
 
-            PlayerPrefs.SetInt("moneyTmp", money);
-            PlayerPrefs.SetFloat("criticalFactorTmp", criticaFactor);
-            RestoreValues();
 
+            attackValues.criticalFactor = criticaFactor;
         }
     }
     public void UpgradeCriticaChange()
@@ -118,9 +106,7 @@ public class StoreManager : MonoBehaviour
 
             criticalChanceCurrentPrice = criticalChanceCurrentPrice * PriceMultiplier;
 
-            PlayerPrefs.SetInt("moneyTmp", money);
-            PlayerPrefs.SetFloat("criticalChangeTmp", criticaFactor);
-            RestoreValues();
+            attackValues.criticalChance= criticalChance;
 
         }
     }
@@ -132,10 +118,7 @@ public class StoreManager : MonoBehaviour
             health += 5;
             healthCurrentPrice = healthCurrentPrice * PriceMultiplier;
 
-            PlayerPrefs.SetInt("moneyTmp", money);
-            PlayerPrefs.SetInt("healthTmp", health);
-            RestoreValues();
-
+            healthValues.Health = health;
         }
     }
     public void UpgradeHealthRegen()
@@ -151,10 +134,8 @@ public class StoreManager : MonoBehaviour
                 healthRegen = healthRegen * HealthRegenMultiplier;
 
             healthRegenCurrentPrice = healthRegenCurrentPrice * PriceMultiplier;
-            PlayerPrefs.SetInt("moneyTmp", money);
-            PlayerPrefs.SetFloat("healthRegenTmp", healthRegen);
-            RestoreValues();
 
+            // healthRegen Koyulacak.
         }
     }
     public void UpgradeArmor()
@@ -170,10 +151,8 @@ public class StoreManager : MonoBehaviour
                 armor = armor * ArmorMultiplier;
 
             armorCurrentPrice = armorCurrentPrice * PriceMultiplier;
-            PlayerPrefs.SetInt("moneyTmp", money);
-            PlayerPrefs.SetFloat("armorTmp", armor);
-            RestoreValues();
 
+            //
         }
     }
     public void UpgradeAttackRange()
@@ -184,34 +163,9 @@ public class StoreManager : MonoBehaviour
             attackRange += 2;
 
             attackRangeCurrentPrice = attackRangeCurrentPrice * PriceMultiplier;
-            PlayerPrefs.SetInt("moneyTmp", money);
-            PlayerPrefs.SetFloat("attackRangeTmp", attackRange);
-            RestoreValues();
+
 
         }
     }
 
-
-    public void RestoreValues()
-    {
-        DamageBtnValue.text = PlayerPrefs.GetFloat("damageTmp").ToString();
-        CriticalFactorBtnValue.text = PlayerPrefs.GetFloat("criticalFactorTmp").ToString();
-        AttackSpeedBtnValue.text = PlayerPrefs.GetFloat("attackSpeedTmp").ToString();
-        CriticalChangeBtnValue.text = PlayerPrefs.GetFloat("criticaChangeTmp").ToString();
-        HealthBtnValue.text = PlayerPrefs.GetInt("healthTmp").ToString();
-        HealthRegenBtnValue.text = PlayerPrefs.GetFloat("healthRegenTmp").ToString();
-        ArmorBtnValue.text = PlayerPrefs.GetFloat("armorTmp").ToString();
-        AttackRangeBtnValue.text = PlayerPrefs.GetInt("attackRangeTmp").ToString();
-
-        DamageBtnPrice.text = damageCurrentPrice.ToString();
-        CriticalFactorBtnPrice.text = criticaFactorCurrentPrice.ToString();
-        AttackSpeedBtnPrice.text = attackSpeedCurrentPrice.ToString();
-        CriticalChangeBtnPrice.text = criticalChanceCurrentPrice.ToString();
-        HealthBtnPrice.text = healthCurrentPrice.ToString();
-        HealthRegenBtnPrice.text = healthRegenCurrentPrice.ToString();
-        ArmorBtnPrice.text = armorCurrentPrice.ToString();
-        AttackRangeBtnPrice.text = attackRangeCurrentPrice.ToString();
-        CoinText.text = coin.ToString();
-        MoneyText.text = money.ToString();
-    }
 }

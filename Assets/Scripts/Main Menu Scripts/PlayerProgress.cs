@@ -21,7 +21,21 @@ public class PlayerProgress : MonoBehaviour
             armor = PlayerPrefs.GetFloat("armor");
             criticalChance = PlayerPrefs.GetFloat("criticalChance");
             coin = PlayerPrefs.GetInt("coin");
+
             Debug.Log("GameSetBefore True");
+
+            Debug.Log("Damage :" + damage);
+            Debug.Log("attackSpeed" + attackSpeed);
+            Debug.Log("criticalFactor" + criticaFactor);
+            Debug.Log("attackRange" + attackRange);
+            Debug.Log("health" + health);
+            Debug.Log("healthRegen" + healthRegen);
+            Debug.Log("armor" + armor);
+            Debug.Log("criticalChance" + criticalChance);
+            Debug.Log("coin" + coin);
+            
+
+
         }
         else
         {
