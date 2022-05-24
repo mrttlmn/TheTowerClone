@@ -1,30 +1,57 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerHealth : MonoBehaviour
 {
-    public int Health;
-    void Start()
-    {
-        int BaseHealth = PlayerPrefs.GetInt("health");
-        PlayerPrefs.SetInt("healthTmp", BaseHealth);
-        Health = BaseHealth;
 
+    public float Health;
+    public float HealthRegen;
+    public float Armor;
+    public int MaxHealth;
+
+
+    Text healthBarText;
+    Slider healthBar;
+
+
+    float secondHandler = 0;
+    
+    void Start()
+    {     
+        healthBar = GameObject.Find("SectionLeft").GetComponent<Slider>();   
+        healthBarText = GameObject.Find("HealthBarText").GetComponent<Text>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Health <= 0)
         {
             Debug.LogWarning("DED");
+        }      
+        healthBar.maxValue = MaxHealth;
+        healthBar.value = Health;
+
+        // Verilerin UI Kýsmýnda Güncellenmesi
+        healthBarText.text = Convert.ToInt32(Health) + " / " + MaxHealth.ToString();
+
+
+        secondHandler -= Time.deltaTime;
+        if(secondHandler < 0)
+        {
+            Health += HealthRegen;
+            if(Health > MaxHealth)
+            {
+                Health = MaxHealth;
+            }
+            secondHandler += 0.5f;
         }
     }
 
-    public void TakeDamage(int Damage)
+    public void TakeDamage(float Damage)
     {
-        Health -= Damage;
-        PlayerPrefs.SetInt("healthTmp", Health);
+        Health = Damage - Convert.ToInt32(Armor);
     }
 }

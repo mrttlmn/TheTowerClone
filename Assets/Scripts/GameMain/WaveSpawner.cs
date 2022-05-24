@@ -1,25 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
     public Wave[] Waves;
     public float MaxSpawnDistance = 2, MinSpawnDistance = 1;
     public GameObject Tower;
+    public GameObject TimerSection;
+    float timeLeft;
 
+    public Slider sliderV;
+
+
+    public float damageMultiplier;
+    public float healthMultiplier;
     void Start()
     {
         Tower = GameObject.Find("Tower");
-        StartCoroutine(WaveStart());
-        
+        sliderV = TimerSection.GetComponent<Slider>();
+        StartCoroutine(WaveStart(sliderV));
+      
     }
-
-    IEnumerator WaveStart()
+    private void Update()
     {
+        sliderV.value -= Time.deltaTime;
+    }
+    IEnumerator WaveStart(Slider slider)
+    {
+
         foreach (Wave wave in Waves)
         {
-
+            Debug.Log(wave.NextWaveInSeconds);
+            slider.minValue = 0;
+            slider.maxValue = wave.NextWaveInSeconds;
+            slider.value = slider.maxValue;
+            
             Debug.Log(wave.name + " Started");
             foreach (WaveData waveData in wave.WaveDataset)
             {
@@ -36,11 +53,19 @@ public class WaveSpawner : MonoBehaviour
                         spawnPoint.x += MinSpawnDistance;
                         spawnPoint.y += MinSpawnDistance;
                     }
-                    GameObject.Instantiate(waveData.Enemy, position: spawnPoint, Quaternion.identity);
+                    var Enemy = GameObject.Instantiate(waveData.Enemy, position: spawnPoint, Quaternion.identity);
+                    Enemy.transform.parent = GameObject.Find("EnemyHolder").transform;
+
+                    // Collabrating Stats
+                    var EnemyAttackStats = Enemy.GetComponent<EnemyAI>();
+                    EnemyAttackStats.damagePower += damageMultiplier;
+                    var EnemyHealthStats = Enemy.GetComponent<EnemyHealth>();
+                    EnemyHealthStats.Health += healthMultiplier;
                 }
                 yield return new WaitForSeconds(wave.NextWaveInSeconds);
+                damageMultiplier += 0.25f;
             }
         }
-        StopCoroutine(WaveStart());
+        StopCoroutine(WaveStart(slider));
     }
 }

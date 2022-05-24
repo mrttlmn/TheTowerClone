@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2357443166925394250}
   - component: {fileID: 2357443166925394245}
-  - component: {fileID: 2357443166925394244}
   - component: {fileID: 6998396071706158027}
   - component: {fileID: -4859284173597727114}
   m_Layer: 0
@@ -85,27 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &2357443166925394244
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2357443166925394247}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &6998396071706158027
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,3 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5d0bd0cf0b8724888c44cc87d2e5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  time: 3
+  target: {x: 0, y: 0}
+  bulletSpeed: 5

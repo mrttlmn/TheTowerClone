@@ -8,7 +8,6 @@ public class Wave : ScriptableObject
     public int WaveId;
     public List<WaveData> WaveDataset;
     public float NextWaveInSeconds;
-    public float SpawnRate;
 }
 [System.Serializable]
 public class WaveData

@@ -16,58 +16,56 @@ public class TowerAttack : MonoBehaviour
 
     public GameObject target;
 
+    float targetDistance;
 
+    bool targetLocked;
 
     public float nextTimeToAttack = 0f;
-    void Start()
-    {
-        storeManager = GameObject.Find("StoreManager");
-        var ValuesHolder = storeManager.GetComponent<StoreManager>();
-        attackSpeed = ValuesHolder.attackSpeed;
-        attackPower = ValuesHolder.damage;
-        criticalChance = ValuesHolder.criticalChance;
-        criticalFactor = ValuesHolder.criticaFactor;
-        attackRange = ValuesHolder.attackRange;
-
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
-
         Collider2D[] colliderArray = Physics2D.OverlapCircleAll(this.transform.position, 2);
+        if (target != null)
+        {
+            targetDistance = Vector2.Distance(this.gameObject.transform.position, target.transform.position);
+        }
+
         foreach (Collider2D collider in colliderArray)
         {
+            var distance = Vector2.Distance(this.gameObject.transform.position, collider.transform.position);
             if (collider.gameObject.GetComponent<EnemyAI>() != null)
             {
-                target = collider.gameObject;
+                if (distance < targetDistance || target == null)
+                {
+                    target = collider.gameObject;
+                }
             }
 
         }
 
-        if (target.GetComponent<EnemyAI>() != null)
+
+
+
+        if (target != null)
         {
-            nextTimeToAttack -= Time.deltaTime;
-            if(nextTimeToAttack < 0f)
-            {
-                GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                bullet.GetComponent<BulletScript>().damage = Convert.ToInt32(attackPower);
-                rb.AddForce(target.transform.position * attackSpeed, ForceMode2D.Impulse);
 
+            nextTimeToAttack -= Time.deltaTime;
+            if (nextTimeToAttack < 0f)
+            {
+
+                Shoot(target.transform.position);
                 nextTimeToAttack = attackSpeed;
-                Debug.Log("Attacking");
             }
-               
 
         }
-
-
     }
 
-    private void OnDrawGizmos()
+    void Shoot(Vector2 enemyPosition)
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(this.transform.position, 1);
+        GameObject bullet = Instantiate(bulletPrefab, this.gameObject.transform.position, Quaternion.identity);
+        bullet.GetComponent<BulletScript>().target = enemyPosition;
+        bullet.GetComponent<BulletScript>().damage = attackPower;
     }
 }

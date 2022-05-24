@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,12 @@ public class EnemyAI : MonoBehaviour
 
     public float nextTimeToAttack;
     public float attackRate;
-    public int damagePower;
+    public float damagePower;
+    public string GUID;
     void Start()
     {
        Target = GameObject.Find("Tower");
+        GUID = Guid.NewGuid().ToString();   
 
     }
 

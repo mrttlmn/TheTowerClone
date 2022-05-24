@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int Health = 10;
-
+    public float Health = 10;
+    public ParticleSystem destroyEffect;
     public int MoneyOnDestroy = 1;
     public GameObject storeManager;
 
@@ -19,13 +19,24 @@ public class EnemyHealth : MonoBehaviour
         if (Health <= 0)
         {
             Destroy(this.gameObject);
+
         }
     }
 
-    public void TakeDamage(int Damage)
+    public void TakeDamage(float Damage)
     {
         Health -= Damage;
 
         storeManager.GetComponent<StoreManager>().money += MoneyOnDestroy;
     }
+
+    private void OnDestroy()
+    {
+        ParticleSystem particle = Instantiate(destroyEffect, this.gameObject.transform);
+        particle.transform.parent = GameObject.Find("ParticleHolder").transform;
+        particle.Play();
+
+    }
+
+
 }
