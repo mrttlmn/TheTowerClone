@@ -21,7 +21,7 @@ public class TowerAttack : MonoBehaviour
     bool targetLocked;
 
     public float nextTimeToAttack = 0f;
-    
+    public AudioSource ShootSFX;
 
     // Update is called once per frame
     void Update()
@@ -64,6 +64,7 @@ public class TowerAttack : MonoBehaviour
 
     void Shoot(Vector2 enemyPosition)
     {
+        ShootSFX.Play();
         GameObject bullet = Instantiate(bulletPrefab, this.gameObject.transform.position, Quaternion.identity);
         bullet.GetComponent<BulletScript>().target = enemyPosition;
         bullet.GetComponent<BulletScript>().damage = attackPower;

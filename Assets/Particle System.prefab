@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3041587715049625593}
   - component: {fileID: 3041587715049625592}
   - component: {fileID: 3041587715049625599}
-  - component: {fileID: -7210847238541747847}
+  - component: {fileID: -975564937459665384}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -2347,7 +2347,7 @@ ParticleSystem:
     randomizePerFrame: 0
   ExternalForcesModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     multiplierCurve:
       serializedVersion: 2
       minMaxState: 0
@@ -4805,7 +4805,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &-7210847238541747847
+--- !u!114 &-975564937459665384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

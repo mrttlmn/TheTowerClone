@@ -10,7 +10,8 @@ public class WaveSpawner : MonoBehaviour
     public GameObject Tower;
     public GameObject TimerSection;
     float timeLeft;
-
+    public Text DamageMultiplier;
+    public Text HealthMultiplier;
     public Slider sliderV;
 
 
@@ -26,6 +27,8 @@ public class WaveSpawner : MonoBehaviour
     private void Update()
     {
         sliderV.value -= Time.deltaTime;
+        DamageMultiplier.text = damageMultiplier.ToString();
+        HealthMultiplier.text = healthMultiplier.ToString();
     }
     IEnumerator WaveStart(Slider slider)
     {
@@ -56,14 +59,15 @@ public class WaveSpawner : MonoBehaviour
                     var Enemy = GameObject.Instantiate(waveData.Enemy, position: spawnPoint, Quaternion.identity);
                     Enemy.transform.parent = GameObject.Find("EnemyHolder").transform;
 
-                    // Collabrating Stats
+                    
                     var EnemyAttackStats = Enemy.GetComponent<EnemyAI>();
                     EnemyAttackStats.damagePower += damageMultiplier;
                     var EnemyHealthStats = Enemy.GetComponent<EnemyHealth>();
                     EnemyHealthStats.Health += healthMultiplier;
                 }
-                yield return new WaitForSeconds(wave.NextWaveInSeconds);
+                healthMultiplier += 5f;
                 damageMultiplier += 0.25f;
+                yield return new WaitForSeconds(wave.NextWaveInSeconds);
             }
         }
         StopCoroutine(WaveStart(slider));

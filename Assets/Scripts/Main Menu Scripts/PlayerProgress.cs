@@ -52,6 +52,15 @@ public class PlayerProgress : MonoBehaviour
             PlayerPrefs.SetFloat("criticalChance", 0);
             PlayerPrefs.SetInt("coin", 50);
 
+
+            PlayerPrefs.SetInt("damageP", 10);
+            PlayerPrefs.SetInt("attackSpeedP", 10);
+            PlayerPrefs.SetInt("attackRangeP", 10);
+            PlayerPrefs.SetInt("healthP", 10);
+            PlayerPrefs.SetInt("armorP", 10);
+            PlayerPrefs.SetInt("criticalChangeP", 10);
+            PlayerPrefs.SetInt("criticalFactorP", 10);
+            PlayerPrefs.SetInt("healthRegenP", 10);
         }
     }
 

@@ -12,7 +12,7 @@ public class StoreManager : MonoBehaviour
     public int money = 100;
     public Text CoinText;
     public Text MoneyText;
-
+    public Text Damage,Health;
     public Text AttackRangeBtnPrice, ArmorBtnPrice, HealthRegenBtnPrice, HealthBtnPrice, AttackRangeBtnValue, ArmorBtnValue, HealthRegenBtnValue, HealthBtnValue, DamageBtnValue, DamageBtnPrice, AttackSpeedBtnValue, AttackSpeedBtnPrice, CriticalFactorBtnValue, CriticalFactorBtnPrice, CriticalChangeBtnValue, CriticalChangeBtnPrice;
 
     #region GameStoreSettings
@@ -77,6 +77,8 @@ public class StoreManager : MonoBehaviour
     {
         MoneyText.text = money.ToString();
         CoinText.text = coin.ToString();
+        Health.text = health.ToString();
+        Damage.text = damage.ToString();
     }
 
 
