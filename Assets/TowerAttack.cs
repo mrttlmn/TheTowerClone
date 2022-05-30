@@ -22,11 +22,13 @@ public class TowerAttack : MonoBehaviour
 
     public float nextTimeToAttack = 0f;
     public AudioSource ShootSFX;
-
+    public Transform range;
     // Update is called once per frame
     void Update()
     {
-        Collider2D[] colliderArray = Physics2D.OverlapCircleAll(this.transform.position, 2);
+
+        
+        Collider2D[] colliderArray = Physics2D.OverlapCircleAll(this.transform.position, attackRange * 0.2f);
         if (target != null)
         {
             targetDistance = Vector2.Distance(this.gameObject.transform.position, target.transform.position);
@@ -60,6 +62,10 @@ public class TowerAttack : MonoBehaviour
             }
 
         }
+        Debug.Log(attackRange);
+
+        range.localScale = new Vector3(attackRange * 0.2f, attackRange * 0.2f, 0);
+
     }
 
     void Shoot(Vector2 enemyPosition)

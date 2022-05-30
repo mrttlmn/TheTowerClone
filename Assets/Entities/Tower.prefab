@@ -115,6 +115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 0
+  HealthRegen: 0
+  Armor: 0
+  MaxHealth: 0
 --- !u!114 &-5740082400692454375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +139,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2357443166925394247, guid: bd32eda0e3d31254e87f93faaf657c23, type: 3}
   target: {fileID: 0}
   nextTimeToAttack: 0
+  ShootSFX: {fileID: 0}
 --- !u!50 &7333821884893667252
 Rigidbody2D:
   serializedVersion: 4

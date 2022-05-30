@@ -67,11 +67,15 @@
     <Compile Include="Assets\Scripts\GameMain\EnemyAI.cs" />
     <Compile Include="Assets\EnemyHealth.cs" />
     <Compile Include="Assets\ParticleDestroy.cs" />
+    <Compile Include="Assets\MainUI.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\PlayerProgress.cs" />
     <Compile Include="Assets\Scripts\GameMain\UIController.cs" />
     <Compile Include="Assets\Scripts\GameMain\StoreManager.cs" />
     <Compile Include="Assets\BulletScript.cs" />
-    <Compile Include="Assets\MainUI.cs" />
+    <Compile Include="Assets\RangeCircle.cs" />
+    <Compile Include="Assets\SetGameTime.cs" />
+    <Compile Include="Assets\SFXController.cs" />
+    <Compile Include="Assets\SFX.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\6000FlatButtonIcon\readme.txt" />

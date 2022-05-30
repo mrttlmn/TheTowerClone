@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TowerHealth : MonoBehaviour
@@ -29,7 +30,7 @@ public class TowerHealth : MonoBehaviour
     {
         if(Health <= 0)
         {
-            Debug.LogWarning("DED");
+            SceneManager.LoadScene("Menu");
         }      
         healthBar.maxValue = MaxHealth;
         healthBar.value = Health;

@@ -9,7 +9,7 @@ public class StoreManager : MonoBehaviour
     public float attackSpeed, criticaFactor, attackRange, healthRegen, criticalChance, damage, armor;
     public float damageCurrentPrice = 10, attackSpeedCurrentPrice = 10, criticaFactorCurrentPrice = 10, attackRangeCurrentPrice = 10, healthCurrentPrice = 10, healthRegenCurrentPrice = 10, armorCurrentPrice = 10, criticalChanceCurrentPrice = 10;
     public int coin, health;
-    public int money = 100;
+    public int money = 50;
     public Text CoinText;
     public Text MoneyText;
     public Text Damage,Health;
