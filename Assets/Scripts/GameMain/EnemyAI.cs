@@ -17,7 +17,6 @@ public class EnemyAI : MonoBehaviour
     {
        Target = GameObject.Find("Tower");
         GUID = Guid.NewGuid().ToString();   
-
     }
 
     // Update is called once per frame

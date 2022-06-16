@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\SFXController.cs" />
     <Compile Include="Assets\Scripts\GameMain\WaveSpawner.cs" />
     <Compile Include="Assets\UpgradesMenuUI.cs" />
     <Compile Include="Assets\Waves\Wave.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Assets\TowerAttack.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\SetDiff.cs" />
     <Compile Include="Assets\Scripts\GameMain\Tower\TowerHealth.cs" />
+    <Compile Include="Assets\SFX.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\RouteGameMain.cs" />
     <Compile Include="Assets\Scripts\GameMain\EnemyAI.cs" />
     <Compile Include="Assets\EnemyHealth.cs" />
@@ -70,12 +72,12 @@
     <Compile Include="Assets\MainUI.cs" />
     <Compile Include="Assets\Scripts\Main Menu Scripts\PlayerProgress.cs" />
     <Compile Include="Assets\Scripts\GameMain\UIController.cs" />
+    <Compile Include="Assets\RangeCircle.cs" />
     <Compile Include="Assets\Scripts\GameMain\StoreManager.cs" />
     <Compile Include="Assets\BulletScript.cs" />
-    <Compile Include="Assets\RangeCircle.cs" />
     <Compile Include="Assets\SetGameTime.cs" />
-    <Compile Include="Assets\SFXController.cs" />
-    <Compile Include="Assets\SFX.cs" />
+    <Compile Include="Assets\EnemyRangedAI.cs" />
+    <Compile Include="Assets\EnemyBulletScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\6000FlatButtonIcon\readme.txt" />
